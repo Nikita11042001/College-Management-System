@@ -1,0 +1,45 @@
+{% extends 'staff_templates/base.html' %}
+{% load bootstrap4 %}
+{% block page_header %}
+<h2>FINAL REPORTS: Details of Students on basis of date of admission....</h2>
+{% endblock page_header %}
+
+
+{% block content %}
+<div>
+   {% if Students %}      
+      <ul>
+         {% for student in Students %}
+         <div class="card mb-3">
+            <h4 class="card-header">
+                {{student}}
+            </h4>
+            <div class="card-body">
+               <li>
+                  <h3>Details : <br>
+                  </h3>
+                  <h4>
+                     Date Of Admission:{{student.DOA}}<br>
+                   Id:{{student.id}}<br>
+                   Name:{{ student.name }}<br>
+                   Registration Number: {{student.registrationno}}<br>
+                   Roll NO : {{student.rollno}}<br>
+                   Gender: {{student.gender}}<br>
+                   Parent Contact Number :{{student.parentcontactno}}<br>
+                   Address:{{student.address}}<br>
+                   Date Of Birth:{{student.DOB}}<br>
+                   Class : {{student.classname}}<br>
+                   Section: {{student.Section}}<br>
+                   </h4>
+                      
+                     </li>
+            </div>
+        </div>
+           
+      {% endfor %}
+      </ul>
+   {% endif %}
+   </div>
+      
+{% endblock content %}
+

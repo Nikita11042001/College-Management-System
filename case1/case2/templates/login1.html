@@ -1,0 +1,63 @@
+{% extends 'staff_templates/base.html' %}
+
+{% block page_header %}
+<h2 >Log into your account.</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password did not match. please try again.</p>
+{% endif %}
+
+<div>
+    <form action="{% url 'dologin' %}" method="POST">
+    {% csrf_token %}
+    <div class="login-box">
+        <div class="login-logo">
+          <b>COLLEGE </b>MANAGEMENT SYSTEM
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+          <div class="card-body login-card-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+      
+            <form action="/dologin" method="post">
+              {% csrf_token %}
+              <div class="input-group mb-3">
+                <input type="username" class="form-control" placeholder="username" name="username">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                      <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Password" name="password">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+                <!-- /.col -->
+                <div class="col-4">
+                  <button type="submit" class="btn btn-primary btn-block">Login In</button>
+                </div>
+                <!-- /.col -->
+              </div>
+             
+            </form>
+      
+            
+          </div>
+          <!-- /.login-card-body -->
+        </div>
+    
+    
+</form>
+
+</div>
+<div>
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'staff_templates/base.html' %}
+{% block page_header %}
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    <h3>Result Page</h3>
+{% endblock page_header %}
+{% block content %}
+<p><h2>
+    <br>
+    <ul>
+        <li class="nav-item">
+            Details of Students and Subjects:
+            <a class="nav-link" href="{% url 'results' %}">click here</a><br>
+         </li>
+         <li class="nav-item">
+            SEARCH:
+            <a class="nav-link" href="{% url 'search_result' %}">click here</a><br>
+         </li>
+        </h2>
+    </ul>    
+</p>
+{% endblock content %}

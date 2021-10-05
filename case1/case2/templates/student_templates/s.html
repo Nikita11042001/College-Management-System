@@ -1,0 +1,19 @@
+{% extends 'staff_templates/base.html' %}
+{% block page_header %}
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    <h3>Student name </h3>
+{% endblock page_header %}
+
+{% block content %}
+<ul>
+    {% for topic in students %}
+    <h3>
+    <li>
+        <a href="{% url 'topic1' topic.id %}">{{ topic.name }}</a>
+    </li>
+</h3>
+    {% empty %}
+    <li>No students</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

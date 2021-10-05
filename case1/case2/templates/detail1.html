@@ -1,0 +1,48 @@
+{% extends 'staff_templates/base.html' %}
+{% load bootstrap4 %}
+{% load mathfilters %}
+{% block page_header %}
+<h2>FINAL REPORTS: Details of Students on basis of date of marks</h2>
+{% endblock page_header %}
+
+
+{% block content %}
+<div>
+   {% if results %}
+   
+      <ul>
+         <div class="card mb-3">
+            {% for y in students %}
+            <div class="card-body">
+            <h4 class="card-header">
+               Overall Result of {{y}}<br>
+               Name : {{y.name}}<br>
+               Registration No : {{y.registrationno}}<br>
+            </h4>
+         {% for k in results %}
+        
+         <li>
+         
+            <h3>Details : <br>
+            </h3>
+            <h4>
+               Subject Name :{{k.subjectname}} <br>
+               marks Obtained:{{k.marksobtained}}/{{k.maximummarks}}<br>
+            </h4>
+            </li>
+        
+        {% endfor %}  
+            </div>
+            <h3>{{sum}} <br>{{sum1}}
+            </h3>
+             {{s}}
+            
+      {% endfor %}
+          </div>
+      </ul>
+   
+   {% endif %}
+</div>
+
+{% endblock content %}
+

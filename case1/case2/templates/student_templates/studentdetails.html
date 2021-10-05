@@ -1,0 +1,24 @@
+{% extends 'staff_templates/base.html' %}
+
+{% block content %}
+<h2><a href="{% url 'index' %}">Go to home</a></h2>
+
+<p><h2>
+    <br>
+    <ul>
+        <li class="nav-item">
+            STUDENTS:
+            <a class="nav-link" href="{% url 'students' %}">click</a><br>
+         </li>
+         <li class="nav-item">
+            ADD STUDENTS
+            <a class="nav-link" href="{% url 'add_student' %}">click here</a><br>
+         </li>
+         <li class="nav-item">
+            SEARCH:
+            <a class="nav-link" href="{% url 'search_student' %}">click here</a><br>
+         </li>
+        </h2>
+    </ul>    
+</p>
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends 'staff_templates/base.html' %}
+{% block page_header %}
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    <h3>SEARCH BOX  </h3>
+{% endblock page_header %}
+{% block content %}
+<div>
+   <form method="POST" action="/search_result/">
+      {% csrf_token %}
+      <h3>Search by Registration No. <input type="search" placeholder="Search.." name="search" >
+                        <button type="submit">Submit</button><br>
+                        </h3>
+</form> 
+<form method="POST" action="/search_result/">
+    {% csrf_token %}
+    <h3>Search by Subject Name: <input type="search" placeholder="Search.." name="search" >
+                      <button type="submit">Submit</button><br>
+                      </h3>
+</form> 
+</div>    
+ <div>
+      {% if results %}
+      {% for y in students %}
+         <ul>
+            {% for k in results %}
+            {% if k.registrationno == y.registrationno %}
+            <div class="card mb-3">
+               <h4 class="card-header">
+                   {{student}}
+               </h4>
+               <div class="card-body">
+                  <li>
+                     <h3>Details : <br>
+                     </h3>
+                     <h4>
+                        Name : {{y.name}}<br>
+                        Registration No : {{k.registrationno}}<br>
+                        Subject Name :{{k.subjectname}} <br>
+                        marks Obtained:{{k.marksobtained}}/{{k.maximummarks}}<br>
+                        result: {{k.result}}<br>
+                     </h4>
+               </div>
+           </div>
+           {% endif %}
+         
+           {% endfor %}  
+         
+         </ul>
+      {% endfor %}
+      {% endif %}
+    </div>
+
+<div>
+   {% for message in messages %}
+   <h3> {{message}}</h3>
+   {% endfor %}
+</div>
+
+{% endblock content %}
