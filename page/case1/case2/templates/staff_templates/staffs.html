@@ -1,0 +1,37 @@
+{% extends 'staff_templates/base.html' %}
+{% block page_header %}
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    <h3>Staffs: </h3>
+{% endblock page_header %}
+
+{% block content %}
+    {% for staff in staffs %}
+    <div class="card mb-3">
+    <h4 class="card-header">
+        {{staff}}
+    </h4>
+    <div class="card-body">
+        <li>
+            <h3>Details : <br>
+            </h3>
+            <h4>
+             Id:{{staff.id}}<br>
+             Name:{{ staff.name }}<br>
+             Email:{{ staff.email }}<br>
+             ContactNo.:{{staff.contactno}}<br>
+             Address:{{staff.address}}<br>
+             Date Of Birth:{{staff.DOB}}<br>
+             Date Of Joining:{{staff.DOJ}}<br>
+             Qualification:{{staff.qualification}}<br>
+             Department:{{staff.department}}<br>
+             Job Title:{{staff.jobtitle}}<br>
+             Basic Pay:{{staff.basicpay}}
+             </h4>
+        </li>
+    </div>
+</div>
+    
+    {% empty %}
+    <p>no staffs yet</p>
+    {% endfor %}
+{% endblock content %}

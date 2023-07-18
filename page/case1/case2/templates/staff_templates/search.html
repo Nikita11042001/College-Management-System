@@ -1,0 +1,71 @@
+{% extends 'staff_templates/base.html' %}
+{% load bootstrap4 %}
+{% block page_header %}
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    <h3>SEARCH BOX  </h3>
+    {% endblock page_header %}
+
+{% block content %}
+<div>
+   <form method="POST" action="/search/">
+      {% csrf_token %}
+      <h3>Search by Id: <input type="search" placeholder="Search.." name="srch">
+                        <button type="submit">Submit</button><br>
+                        </h3>
+</form> 
+</div>
+
+<div>
+<form method="POST" action="/search/">
+   {% csrf_token %}
+   <h3> Search by Full Name : <input type="search" placeholder="Search.." name="srch">
+                     <button type="submit">Submit</button><br>
+</h3>
+
+ </form> 
+</div>
+<br><br>
+<div>
+   {% if sr %}
+      
+      <ul>
+         {% for staff in sr %}
+         <div class="card mb-3">
+            <h4 class="card-header">
+               {{staff}}
+           </h4>
+            <div class="card-body">
+               <li>
+                  <h3>Details : <br></h3>
+                   <h4>Id:{{staff.id}}<br>
+                      Name:{{ staff.name }}<br>
+                      Email:{{ staff.email }}<br>
+                      ContactNo.:{{staff.contactno}}<br>
+                      Address:{{staff.address}}<br>
+                      Date Of Birth:{{staff.DOB}}<br>
+                      Date Of Joining:{{staff.DOJ}}<br>
+                      Qualification:{{staff.qualification}}<br>
+                      Department:{{staff.department}}<br>
+                      Job Title:{{staff.jobtitle}}<br>
+                      Basic Pay:{{staff.basicpay}}
+                   </h4>
+                   
+                  </li>
+            </div>
+        </div>
+           
+      {% endfor %}
+      </ul>
+   {% endif %}
+   </div>
+      
+
+</div>
+
+<div>
+   {% for message in messages %}
+   <h3> {{message}}</h3>
+   {% endfor %}
+</div>
+
+{% endblock content %}

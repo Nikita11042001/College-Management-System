@@ -1,0 +1,23 @@
+{% extends 'staff_templates/base.html' %}
+{% block page_header %}
+<h2>Staffs</h2>
+<p>
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    
+</p>
+{% endblock page_header %}
+
+{% block content %}
+<h3>
+<a href="{% url 'add_newstaff' %}">Add a new staff name</a>
+</h3>
+<ul>
+    {% for topic in topics %}
+    <li><h3>
+        <a href="{% url 'topic' topic.id %}">{{ topic }}</a>
+    </h3></li>
+    {% empty %}
+    <li><h3>No staffs</h3></li>
+    {% endfor %}
+</ul>
+{% endblock content %}

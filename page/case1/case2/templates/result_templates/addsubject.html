@@ -1,0 +1,17 @@
+{% extends 'staff_templates/base.html' %}
+{% load bootstrap4 %}
+{% block page_header %}
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    <h3>ADD SUBJECT </h3>
+{% endblock page_header %}
+{% block content %}
+
+<form action="{% url 'add_subject'  %}" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button name="submit">Add Subject</button>
+    {% endbuttons %}
+</form>
+
+{% endblock content %}

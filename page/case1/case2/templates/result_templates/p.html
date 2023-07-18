@@ -1,0 +1,52 @@
+{% extends 'staff_templates/base.html' %}
+  {% block page_header %}
+      <h2><a href="{% url 'index' %}">Go to home</a></h2>
+      <h3>Results of all Students</h3>
+  {% endblock page_header %}
+
+{% block content %}
+<div class="card mb-3">
+<div class="card-header">
+<i class="fas fa-table"></i>
+<b>Marks</b>
+</div>
+<div class="card-body">
+<div class="table-responsive">
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    {% for topic in students %}
+    <thead>
+    <th>Name</th>
+    <td>{{topic.name}}</td>
+    <th>Registration No </th>
+    <td>{{topic.registrationno}}</td>
+    <td> <a href="{% url 'add_subject' %}">add a new subject</a></td>
+  
+</thead>
+<tbody>
+
+    {% for k in results %}
+    {% if  k.registrationno == topic.registrationno %}
+    <tr>
+        <th>Subject Name</th>
+        <th>marks Obtained</th>
+        <th> result</th>
+        <th>Edit Subject</th>
+      </tr>
+    <tr>
+        <td>{{k.subjectname}}</td>
+        <td>{{k.marksobtained}}/{{k.maximummarks}}</td>
+        <td> {{k.result}}</td>
+        <td><a href="{% url 'edit_subject' k.subjectname %}">Edit Subject</a></td>                                            
+    </tr>
+    {% endif %}
+     {% endfor %} 
+  </tbody>
+  {% empty %}
+   <p>student has no courses</p>
+  {% endfor %}
+  </table>
+  </div>
+  </div>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends 'staff_templates/base.html' %}
+{% block page_header %}
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    Staffs: {{ topic }}
+{% endblock page_header %}
+
+
+{% block content %}
+
+<p>
+    Staffs
+</p>
+<p>
+    <ul>
+    {% if Staffs %}
+    {% for staff in Staffs %}
+    <li>{{staff}}
+        <h3>Details : <br>
+        </h3>
+        <h4>
+         Id:{{staff.id}}<br>
+         Name:{{ staff.name }}<br>
+         Email:{{ staff.email }}<br>
+         ContactNo.:{{staff.contactno}}<br>
+         Address:{{staff.address}}<br>
+         Date Of Birth:{{staff.DOB}}<br>
+         Date Of Joining:{{staff.DOJ}}<br>
+         Qualification:{{staff.qualification}}<br>
+         Department:{{staff.department}}<br>
+         Job Title:{{staff.jobtitle}}<br>
+         Basic Pay:{{staff.basicpay}}
+         </h4>
+    </li>
+    <p>
+        <a href="{% url 'edit_staff' staff.id %}">Edit Staff</a>
+    </p>
+    {% empty %}
+    <li>no Details yet</li>
+    {% endfor %}
+    {% else %}
+    <p>
+        <li>Add the details in the link below</li>
+        <a href="{% url 'add_staff' topic.id %}">Add Details</a>
+    </p>
+    {% endif %}
+    </ul>
+</p>
+
+
+{% endblock content %}

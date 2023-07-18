@@ -1,0 +1,40 @@
+{% extends 'staff_templates/base.html' %}
+{% block page_header %}
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    <h3>Students</h3>
+{% endblock page_header %}
+
+{% block content %}
+<p>
+    <ul>
+    {% if Students %}
+    {% for student in Students %}
+    <li>
+        <h3>Details : <br>
+        </h3>
+        <h4>
+         Id:{{student.id}}<br>
+         Name:{{ student.name }}<br>
+         Registration Number: {{student.registrationno}}<br>
+         Roll NO : {{student.rollno}}<br>
+         Gender: {{student.gender}}<br>
+         Parent Contact Number :{{student.parentcontactno}}<br>
+         Address:{{student.address}}<br>
+         Date Of Birth:{{student.DOB}}<br>
+         Date Of Admission:{{student.DOA}}<br>
+         Class : {{student.classname}}<br>
+         Section: {{student.Section}}<br>
+         </h4>
+    </li>
+    <p>
+        <a href="{% url 'edit_student' student.id %}">Edit Student</a>
+    </p>
+    {% empty %}
+    <li>no Details yet</li>
+    {% endfor %}
+    {% endif %}
+    </ul>
+</p>
+
+
+{% endblock content %}

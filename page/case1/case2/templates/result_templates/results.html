@@ -1,0 +1,42 @@
+{% extends 'staff_templates/base.html' %}
+{% block page_header %}
+    <h2><a href="{% url 'index' %}">Go to home</a></h2>
+    <h3>Results of all Students</h3>
+{% endblock page_header %}
+{% block content %}
+
+  
+    
+  
+<div>
+    <ul>
+          <div class="card mb-3">
+            
+            <div class="card-body">
+                {% for topic in students %}
+                <h4 class="card-header">
+                    {{ topic.name }}
+                </h4>
+                <h3>Registration No : {{topic.registrationno}}</h3><br>
+                    {% for k in results %}
+                    {% if  k.registrationno == topic.registrationno %}
+                     <h4>
+                        Subject Name :{{k.subjectname}} <br>
+                        marks Obtained:{{k.marksobtained}}/{{k.maximummarks}}<br>
+                        result: {{k.result}}<br>
+                     </h4>
+                     <p>
+                        <a href="{% url 'edit_subject' k.subjectname %}">Edit Subject</a>
+                     </p>
+                      {% endif %}
+                      {% endfor %}
+                     <a href="{% url 'add_subject' %}">add a new subject</a>
+                {% empty %}
+                <li>No </li>
+         {% endfor %} 
+         </div> 
+         </div>
+    </ul>
+    </div>
+   
+{% endblock content %}
